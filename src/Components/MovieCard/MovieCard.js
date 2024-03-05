@@ -1,25 +1,36 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
+import { Card, CardText } from "react-bootstrap";
 import ReactStars from "react-stars";
 import "./style.css";
+import { Link, useNavigate } from "react-router-dom";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, index }) => {
+  const navigate = useNavigate();
+  const showMovieDetails = (id) => {
+    navigate(`/movie-details/${id}`);
+  };
   return (
     <div>
       <>
-        <Card style={{ width: "18rem" }} className="movie-card">
+        <Card style={{ width: "18rem" }}>
           <Card.Img variant="top" src={movie.posterUrl} />
           <Card.Body>
-            <Card.Title>{movie.title}</Card.Title>
+            <Card.Title>
+              <Link to={`/movie.details/${movie.id}`}>{movie.title}</Link>{" "}
+            </Card.Title>
             <Card.Text>{movie.description}</Card.Text>
-            <ReactStars
-              count={5}
-              value={movie.rating}
-              size={24}
-              activeColor="#ffd700"
-              edit={false}
-            />
-            {/* <Button variant="primary">Go somewhere</Button>*/}
+            <Card.Text>
+              <ReactStars
+                count={5}
+                value={movie.rating}
+                size={24}
+                activeColor="#ffd700"
+                edit={false}
+              />
+            </Card.Text>
+            <button variant="dark" onClick={() => showMovieDetails(movie.id)}>
+              Trailer
+            </button>
           </Card.Body>
         </Card>
       </>

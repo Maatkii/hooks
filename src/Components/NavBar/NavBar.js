@@ -6,6 +6,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useState } from "react";
 import ReactStars from "react-stars";
+import { NavLink } from "react-bootstrap";
+import { Link } from "react-router-dom";
 const NavBar = ({ setRatingChange, setSearchInput, ratingChange }) => {
   const ratingChanged = (rating) => {
     setRatingChange(rating);
@@ -25,6 +27,8 @@ const NavBar = ({ setRatingChange, setSearchInput, ratingChange }) => {
           backgroundAttachment: "inherit",
         }}
       >
+        <Link to="/">HOME</Link>
+        <Link to="/movie-details">Movie Details</Link>
         <Form inline>
           <InputGroup style={{ height: "1000", width: "1000" }}>
             <InputGroup.Text id="basic-addon1"></InputGroup.Text>
